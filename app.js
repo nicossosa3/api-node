@@ -4,13 +4,16 @@ var path = require('path');
 var logger = require('morgan');
 
 const places = require('./routes/places');
-
+const users = require('./routes/users');
+const sessions = require('./routes/sessions');
 const db = require('./config/database');
 
 db.connect();
 
 
 const Place = require('./models/Places');
+const User = require('./models/User');
+
 
 var app = express();
 
@@ -21,6 +24,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Routes
 app.use('/places',places);
+app.use('/users',users);
+app.use('/sessions',sessions);
+
 
 
 // catch 404 and forward to error handler
